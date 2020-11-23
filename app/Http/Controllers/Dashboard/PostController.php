@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePost;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -31,6 +32,6 @@ class PostController extends Controller
     {
         $request->user()->posts()->create($request->input());
 
-        return redirect()->route('my-posts.index');
+        return redirect()->route('dashboard.my-posts.index');
     }
 }

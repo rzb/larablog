@@ -7,14 +7,14 @@
                     <div class="flex">
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
-                            <a href="/my-posts">
-                                <jet-application-mark class="block h-9 w-auto" />
+                            <a :href="route('posts.index')">
+                                <application-mark class="block h-9 w-auto" />
                             </a>
                         </div>
 
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <jet-nav-link href="/my-posts" :active="$page.currentRouteName == 'my-posts.index'">
+                            <jet-nav-link :href="route('dashboard.my-posts.index')" :active="$page.currentRouteName == 'dashboard.my-posts.index'">
                                 My Posts
                             </jet-nav-link>
                         </div>
@@ -118,7 +118,7 @@
             <!-- Responsive Navigation Menu -->
             <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                 <div class="pt-2 pb-3 space-y-1">
-                    <jet-responsive-nav-link href="/my-posts" :active="$page.currentRouteName == 'my-posts'">
+                    <jet-responsive-nav-link :href="route('dashboard.my-posts.index')" :active="$page.currentRouteName == 'dashboard.my-posts.index'">
                         My Posts
                     </jet-responsive-nav-link>
                 </div>
@@ -211,19 +211,21 @@
 </template>
 
 <script>
-    import JetApplicationMark from '@/Jetstream/ApplicationMark'
+    import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
     import JetDropdown from '@/Jetstream/Dropdown'
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import ApplicationMark from '@/Components/ApplicationMark'
 
     export default {
         components: {
-            JetApplicationMark,
+            JetApplicationLogo,
             JetDropdown,
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            ApplicationMark,
         },
 
         data() {
@@ -242,7 +244,7 @@
             },
 
             logout() {
-                axios.post(route('logout').url()).then(response => {
+                axios.post(route('logout')).then(response => {
                     window.location = '/';
                 })
             },
