@@ -8,8 +8,12 @@ use Illuminate\Support\Facades\Route;
 =            Public routes            =
 =====================================*/
 
-Route::get('/',           [BlogPostController::class, 'index'])->name('posts.index');
-Route::get('/posts/{post}', [BlogPostController::class, 'show'])->name('posts.show');
+Route::group(['middleware' => 'cacheable:2'], function() {
+
+	Route::get('/',             [BlogPostController::class, 'index'])->name('posts.index');
+	Route::get('/posts/{post}', [BlogPostController::class, 'show'])->name('posts.show');
+
+});
 
 /*=====  End of Public routes  ======*/
 

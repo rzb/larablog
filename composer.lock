@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a503eaf257d7533e94710b6f24e9bd5e",
+    "content-hash": "83c391aa5fc8a0caee4e9f4c6090fcb8",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3015,6 +3015,72 @@
             "time": "2020-08-18T17:17:46+00:00"
         },
         {
+            "name": "spatie/laravel-varnish",
+            "version": "2.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-varnish.git",
+                "reference": "082b56e2dc40a520e99d423fde9bccc06dc24247"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-varnish/zipball/082b56e2dc40a520e99d423fde9bccc06dc24247",
+                "reference": "082b56e2dc40a520e99d423fde9bccc06dc24247",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.8.0|^6.0|^7.0|^8.0",
+                "illuminate/http": "~5.8.0|^6.0|^7.0|^8.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.8.0|^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Varnish\\VarnishServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Varnish\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Making Varnish and Laravel play nice together",
+            "homepage": "https://github.com/spatie/laravel-varnish",
+            "keywords": [
+                "laravel-varnish",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-varnish/issues",
+                "source": "https://github.com/spatie/laravel-varnish/tree/master"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-09-09T09:58:58+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.3",
             "source": {
@@ -5776,16 +5842,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.11.0",
+            "version": "v1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "f228dc5112bafc14c77d40a2acc0c48058e184b0"
+                "reference": "9aa6c9e289860951e6b4d010c7a841802d015cd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/f228dc5112bafc14c77d40a2acc0c48058e184b0",
-                "reference": "f228dc5112bafc14c77d40a2acc0c48058e184b0",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/9aa6c9e289860951e6b4d010c7a841802d015cd8",
+                "reference": "9aa6c9e289860951e6b4d010c7a841802d015cd8",
                 "shasum": ""
             },
             "require": {
@@ -5822,9 +5888,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.11.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.12.0"
             },
-            "time": "2020-11-15T20:27:00+00:00"
+            "time": "2020-11-23T09:33:08+00:00"
         },
         {
             "name": "filp/whoops",
