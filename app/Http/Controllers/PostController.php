@@ -10,11 +10,14 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Inertia::render('MyPosts/Index');
+        return Inertia::render('MyPosts/Index', [
+            'posts' => $request->user()->posts()->latest()->get(),
+        ]);
     }
 
     /**

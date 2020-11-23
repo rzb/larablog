@@ -52,6 +52,42 @@
                     </template>
                 </jet-form-section>
 
+                <div v-if="posts.length > 0">
+                    <jet-section-border />
+
+                    <div class="mt-10 sm:mt-0">
+                        <jet-action-section>
+                            <template #title>
+                                Your Posts
+                            </template>
+
+                            <template #description>
+                                List of posts you have published so far.
+                            </template>
+
+                            <!-- Post List -->
+                            <template #content>
+                                <div class="space-y-6">
+                                    <div class="flex items-center justify-between" v-for="post in posts">
+                                        <div>
+                                            {{ post.title }}
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <div class="text-sm text-gray-400" v-if="post.publication_date">
+                                                Published {{ fromNow(post.publication_date) }}
+                                            </div>
+                                            <button class="cursor-pointer ml-6 text-sm text-red-500 focus:outline-none">
+                                                View
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </jet-action-section>
+                    </div>
+                </div>
+
             </div>
         </div>
     </app-layout>
@@ -65,6 +101,8 @@
     import JetInputError from './../../Jetstream/InputError'
     import JetActionMessage from './../../Jetstream/ActionMessage'
     import JetButton from './../../Jetstream/Button'
+    import JetSectionBorder from './../../Jetstream/SectionBorder'
+    import JetActionSection from './../../Jetstream/ActionSection'
 
     export default {
         components: {
@@ -75,7 +113,13 @@
             JetInputError,
             JetActionMessage,
             JetButton,
+            JetSectionBorder,
+            JetActionSection,
         },
+
+        props: [
+            'posts',
+        ],
 
         data() {
             return {
@@ -94,7 +138,11 @@
                 this.createPostForm.post('/my-posts', {
                     preserveScroll: true,
                 })
-            }
+            },
+
+            fromNow(timestamp) {
+                return moment(timestamp).local().fromNow()
+            },
         }
     }
 </script>

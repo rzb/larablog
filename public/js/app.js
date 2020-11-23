@@ -3461,6 +3461,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
 /* harmony import */ var _Jetstream_ActionMessage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../Jetstream/ActionMessage */ "./resources/js/Jetstream/ActionMessage.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../Jetstream/SectionBorder */ "./resources/js/Jetstream/SectionBorder.vue");
+/* harmony import */ var _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../Jetstream/ActionSection */ "./resources/js/Jetstream/ActionSection.vue");
 //
 //
 //
@@ -3520,6 +3522,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
@@ -3535,8 +3575,11 @@ __webpack_require__.r(__webpack_exports__);
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__["default"],
     JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_4__["default"],
     JetActionMessage: _Jetstream_ActionMessage__WEBPACK_IMPORTED_MODULE_5__["default"],
-    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_6__["default"]
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_6__["default"],
+    JetSectionBorder: _Jetstream_SectionBorder__WEBPACK_IMPORTED_MODULE_7__["default"],
+    JetActionSection: _Jetstream_ActionSection__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
+  props: ['posts'],
   data: function data() {
     return {
       createPostForm: this.$inertia.form({
@@ -3553,6 +3596,9 @@ __webpack_require__.r(__webpack_exports__);
       this.createPostForm.post('/my-posts', {
         preserveScroll: true
       });
+    },
+    fromNow: function fromNow(timestamp) {
+      return moment(timestamp).local().fromNow();
     }
   }
 });
@@ -47939,7 +47985,129 @@ var render = function() {
                   proxy: true
                 }
               ])
-            })
+            }),
+            _vm._v(" "),
+            _vm.posts.length > 0
+              ? _c(
+                  "div",
+                  [
+                    _c("jet-section-border"),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-10 sm:mt-0" },
+                      [
+                        _c("jet-action-section", {
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "title",
+                                fn: function() {
+                                  return [
+                                    _vm._v(
+                                      "\n                            Your Posts\n                        "
+                                    )
+                                  ]
+                                },
+                                proxy: true
+                              },
+                              {
+                                key: "description",
+                                fn: function() {
+                                  return [
+                                    _vm._v(
+                                      "\n                            List of posts you have published so far.\n                        "
+                                    )
+                                  ]
+                                },
+                                proxy: true
+                              },
+                              {
+                                key: "content",
+                                fn: function() {
+                                  return [
+                                    _c(
+                                      "div",
+                                      { staticClass: "space-y-6" },
+                                      _vm._l(_vm.posts, function(post) {
+                                        return _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "flex items-center justify-between"
+                                          },
+                                          [
+                                            _c("div", [
+                                              _vm._v(
+                                                "\n                                        " +
+                                                  _vm._s(post.title) +
+                                                  "\n                                    "
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "flex items-center"
+                                              },
+                                              [
+                                                post.publication_date
+                                                  ? _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "text-sm text-gray-400"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                            Published " +
+                                                            _vm._s(
+                                                              _vm.fromNow(
+                                                                post.publication_date
+                                                              )
+                                                            ) +
+                                                            "\n                                        "
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e(),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "cursor-pointer ml-6 text-sm text-red-500 focus:outline-none"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                            View\n                                        "
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      }),
+                                      0
+                                    )
+                                  ]
+                                },
+                                proxy: true
+                              }
+                            ],
+                            null,
+                            false,
+                            2751774859
+                          )
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              : _vm._e()
           ],
           1
         )
@@ -63720,8 +63888,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var portal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! portal-vue */ "./node_modules/portal-vue/dist/portal-vue.common.js");
 /* harmony import */ var portal_vue__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(portal_vue__WEBPACK_IMPORTED_MODULE_3__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-__webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 
 
