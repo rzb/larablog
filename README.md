@@ -39,7 +39,13 @@ Unfortunately, I've chosen not to provide tests for the command because I was ru
 
 In order to avoid wasting time fighting the Windows environment, I forked a full Laradock installation and tweaked configuration files as needed. I'm aware that it may be an overkill for you, though. Sorry for the inconvenience!
 
-After cloning this repo:
+### Clone repo with submodules:
+```sh
+$ git clone --recurse-submodules git@github.com:rzb/larablog.git
+# Or, if you have already cloned it without the option to clone submodules... 
+$ git submodule init
+$ git submodule update
+```
 
 ### Create laravel env file from example:
 
@@ -50,7 +56,7 @@ $ cp .env.example .env
 ### Create docker env file from example:
 
 ```sh
-- cp laradock/env-example laradock/.env
+$ cp laradock/env-example laradock/.env
 ```
 
 Mind COMPOSE_PATH_SEPARATOR if you're unluck to be on a Win machine like me.
