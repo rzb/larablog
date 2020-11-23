@@ -70,16 +70,11 @@
                                 <div class="space-y-6">
                                     <div class="flex items-center justify-between" v-for="post in posts">
                                         <div>
-                                            {{ post.title }}
+                                            <a class="underline" href="/" target="_blank">{{ post.title }}</a>
                                         </div>
 
-                                        <div class="flex items-center">
-                                            <div class="text-sm text-gray-400" v-if="post.publication_date">
-                                                Published {{ fromNow(post.publication_date) }}
-                                            </div>
-                                            <button class="cursor-pointer ml-6 text-sm text-red-500 focus:outline-none">
-                                                View
-                                            </button>
+                                        <div class="text-sm text-gray-400" v-if="post.publication_date">
+                                            Published {{ fromNow(post.publication_date) }}
                                         </div>
                                     </div>
                                 </div>

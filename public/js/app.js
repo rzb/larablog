@@ -3553,11 +3553,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -48038,54 +48033,39 @@ var render = function() {
                                           },
                                           [
                                             _c("div", [
-                                              _vm._v(
-                                                "\n                                        " +
-                                                  _vm._s(post.title) +
-                                                  "\n                                    "
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass: "underline",
+                                                  attrs: {
+                                                    href: "/",
+                                                    target: "_blank"
+                                                  }
+                                                },
+                                                [_vm._v(_vm._s(post.title))]
                                               )
                                             ]),
                                             _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass: "flex items-center"
-                                              },
-                                              [
-                                                post.publication_date
-                                                  ? _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "text-sm text-gray-400"
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                                            Published " +
-                                                            _vm._s(
-                                                              _vm.fromNow(
-                                                                post.publication_date
-                                                              )
-                                                            ) +
-                                                            "\n                                        "
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e(),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "button",
+                                            post.publication_date
+                                              ? _c(
+                                                  "div",
                                                   {
                                                     staticClass:
-                                                      "cursor-pointer ml-6 text-sm text-red-500 focus:outline-none"
+                                                      "text-sm text-gray-400"
                                                   },
                                                   [
                                                     _vm._v(
-                                                      "\n                                            View\n                                        "
+                                                      "\n                                        Published " +
+                                                        _vm._s(
+                                                          _vm.fromNow(
+                                                            post.publication_date
+                                                          )
+                                                        ) +
+                                                        "\n                                    "
                                                     )
                                                   ]
                                                 )
-                                              ]
-                                            )
+                                              : _vm._e()
                                           ]
                                         )
                                       }),
@@ -48098,7 +48078,7 @@ var render = function() {
                             ],
                             null,
                             false,
-                            2751774859
+                            2467374694
                           )
                         })
                       ],
