@@ -14,7 +14,9 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        return view('blog.index')->withPosts(Post::latest()->paginate(20));
+        $posts = Post::latest('publication_date')->paginate(20);
+
+        return view('blog.index')->withPosts($posts);
     }
 
     /**
