@@ -130,7 +130,7 @@
 
         methods: {
             createPost() {
-                this.createPostForm.post('/my-posts', {
+                this.createPostForm.post(route('dashboard.my-posts.store'), {
                     preserveScroll: true,
                 })
             },

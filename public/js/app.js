@@ -3585,7 +3585,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createPost: function createPost() {
-      this.createPostForm.post('/my-posts', {
+      this.createPostForm.post(route('dashboard.my-posts.store'), {
         preserveScroll: true
       });
     }
@@ -46352,8 +46352,10 @@ var render = function() {
                     "jet-nav-link",
                     {
                       attrs: {
-                        href: "/my-posts",
-                        active: _vm.$page.currentRouteName == "my-posts.index"
+                        href: _vm.route("dashboard.my-posts.index"),
+                        active:
+                          _vm.$page.currentRouteName ==
+                          "dashboard.my-posts.index"
                       }
                     },
                     [
@@ -46741,8 +46743,9 @@ var render = function() {
                   "jet-responsive-nav-link",
                   {
                     attrs: {
-                      href: "/my-posts",
-                      active: _vm.$page.currentRouteName == "my-posts"
+                      href: _vm.route("dashboard.my-posts.index"),
+                      active:
+                        _vm.$page.currentRouteName == "dashboard.my-posts.index"
                     }
                   },
                   [_vm._v("\n                    My Posts\n                ")]

@@ -32,6 +32,6 @@ class PostController extends Controller
     {
         $request->user()->posts()->create($request->input());
 
-        return redirect()->route('my-posts.index');
+        return redirect()->route('dashboard.my-posts.index');
     }
 }
