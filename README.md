@@ -20,20 +20,11 @@ I was on a newly arrived laptop that came with Windows and only had the weekend,
 
 In order to minimise the strain put on our system during traffic peaks, I decided to leverage Varnish for full page cache. It will cache the homepage and the individual post pages for 2 minutes.
 
-In a real world app, we'd need to know more about the traffic. For example, depending on how the users interact with the client's blog, it could be more appropriate to purge the homepage cache on post creation instead of using TTL.
+In a real world app, we'd need to know more about the traffic. For example, depending on how the users interact with the client's blog, it could be more appropriate to purge the homepage cache on post creation instead of using TTL. Also, parts of the content that depend on auth, like the link to the dashboard, could be loaded using ESI.
 
 ### Ordering by publication_date
 
 I wasn't sure if the requirement was to allow the user to toggle asc and desc. And I couldn't have asked on the weekend. So I assumed you just wanted posts to be sorted by latest by default. Of course, no assumptions in real world projects!
-
-### Scheduled task is missing tests
-
-Unfortunately, I've chosen not to provide tests for the command because I was running out of time. In a real world project, I probably would:
-- validate the response (specially if the client doesn't give us control over his API)
-- check for duplicates
-- check for missing env entries
-- check for missing admin user
-- log errors
 
 ## Instalation
 
