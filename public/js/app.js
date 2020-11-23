@@ -46334,7 +46334,7 @@ var render = function() {
               _c("div", { staticClass: "flex-shrink-0 flex items-center" }, [
                 _c(
                   "a",
-                  { attrs: { href: "/my-posts" } },
+                  { attrs: { href: _vm.route("posts.index") } },
                   [
                     _c("jet-application-mark", {
                       staticClass: "block h-9 w-auto"
