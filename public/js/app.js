@@ -48035,7 +48035,10 @@ var render = function() {
                                                 {
                                                   staticClass: "underline",
                                                   attrs: {
-                                                    href: "/",
+                                                    href: _vm.route(
+                                                      "posts.show",
+                                                      post.id
+                                                    ),
                                                     target: "_blank"
                                                   }
                                                 },
@@ -48075,7 +48078,7 @@ var render = function() {
                             ],
                             null,
                             false,
-                            3122819863
+                            3823331025
                           )
                         })
                       ],

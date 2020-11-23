@@ -70,7 +70,7 @@
                                 <div class="space-y-6">
                                     <div class="flex items-center justify-between" v-for="post in posts">
                                         <div>
-                                            <a class="underline" href="/" target="_blank">{{ post.title }}</a>
+                                            <a class="underline" :href="route('posts.show', post.id)" target="_blank">{{ post.title }}</a>
                                         </div>
 
                                         <div class="text-sm text-gray-400" v-if="post.publication_date">
