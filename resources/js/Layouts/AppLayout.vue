@@ -8,7 +8,7 @@
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
                             <a :href="route('posts.index')">
-                                <jet-application-mark class="block h-9 w-auto" />
+                                <application-mark class="block h-9 w-auto" />
                             </a>
                         </div>
 
@@ -211,19 +211,21 @@
 </template>
 
 <script>
-    import JetApplicationMark from '@/Jetstream/ApplicationMark'
+    import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
     import JetDropdown from '@/Jetstream/Dropdown'
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import ApplicationMark from '@/Components/ApplicationMark'
 
     export default {
         components: {
-            JetApplicationMark,
+            JetApplicationLogo,
             JetDropdown,
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            ApplicationMark,
         },
 
         data() {
