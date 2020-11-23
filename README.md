@@ -1,61 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Larablog test
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a test. Not intended for use in production. 
 
-## About Laravel
+## Stack/skills
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Laravel 8
+- MySQL
+- VueJS
+- Tailwind
+- Varnish
+- TDD
+- Gitflow
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Thoughts
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+I was on a newly arrived laptop that came with Windows and only had the weekend, so I had to compromise a few things. It was pretty fun, though!
 
-## Learning Laravel
+### Using varnish for full page caching
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+In order to minimise the strain put on our system during traffic peaks, I decided to leverage Varnish for full page cache. It will cache the homepage and the individual post pages for 2 minutes.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+In a real world app, we'd need to know more about the traffic. For example, depending on how the users interact with the client's blog, it could be more appropriate to purge the homepage cache on post creation instead of using TTL.
 
-## Laravel Sponsors
+### Ordering by publication_date
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+I wasn't sure if the requirement was to allow the user to toggle asc and desc. And I couldn't have asked on the weekend. So I assumed you just wanted posts to be sorted by latest by default. Of course, no assumptions in real world projects!
 
-### Premium Partners
+### Scheduled task is missing tests
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+Unfortunately, I've chosen not to provide tests for the command because I was running out of time. In a real world project, I probably would:
+- validate the response (specially if the client doesn't give us control over his API)
+- check for duplicates
+- check for missing env entries
+- check for missing admin user
+- log errors
 
-## Contributing
+## Instalation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+In order to avoid wasting time fighting the Windows environment, I forked a full Laradock installation and tweaked configuration files as needed. I'm aware that it may be an overkill for you, though. Sorry for the inconvenience!
 
-## Code of Conduct
+After cloning this repo:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Create laravel env file from example:
 
-## Security Vulnerabilities
+```sh
+$ cp .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Create docker env file from example:
 
-## License
+```sh
+- cp laradock/env-example laradock/.env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Mind COMPOSE_PATH_SEPARATOR if you're unluck to be on a Win machine like me.
+
+### Start docker containers:
+
+```sh
+$ cd laradock
+$ docker-compose up -d nginx mysql proxy
+```  
+
+The above will create a full laravel dev environment including MySQL and Varnish, and will also start running the cron job for importing posts from the provided remote server.
+
+Varnish will be on port 80 and will redirect requests to nginx when cache is not applicable.
+
+### Install composer packages:
+
+```sh
+$ docker-compose exec workspace composer install
+```
+
+### Generate app key:
+```sh
+$ docker-compose exec workspace php artisan key:generate
+```
+
+### Migrate and seed admin user:
+```sh
+$ docker-compose exec workspace php artisan migrate --seed
+```
+
+### Run tests
+```sh
+$ docker-compose exec workspace php artisan test
+```
