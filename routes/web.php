@@ -1,18 +1,38 @@
 <?php
 
+use App\Http\Controllers\BlogPostController;
+use App\Http\Controllers\Dashboard\PostController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/*=====================================
+=            Public routes            =
+=====================================*/
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'cacheable:2'], function() {
+
+	Route::get('/',             [BlogPostController::class, 'index'])->name('posts.index');
+	Route::get('/posts/{post}', [BlogPostController::class, 'show'])->name('posts.show');
+
 });
+
+/*=====  End of Public routes  ======*/
+
+
+/*========================================
+=            Dashboard routes            =
+========================================*/
+
+Route::group([
+    'as'         => 'dashboard.',
+    'prefix'     => 'dashboard',
+    'middleware' => [
+        'auth:sanctum',
+        'verified',
+    ],
+], function () {
+
+    Route::resource('my-posts', PostController::class);
+
+});
+
+/*=====  End of Dashboard routes  ======*/
