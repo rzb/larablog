@@ -3071,7 +3071,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     logout: function logout() {
-      axios.post(route('logout').url()).then(function (response) {
+      axios.post(route('logout')).then(function (response) {
         window.location = '/';
       });
     }
@@ -63995,153 +63995,119 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ziggy", function() { return Ziggy; });
 var Ziggy = {
-  namedRoutes: {
+  "url": "http:\/\/larablog.test",
+  "port": null,
+  "defaults": {},
+  "routes": {
     "login": {
       "uri": "login",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "logout": {
       "uri": "logout",
-      "methods": ["POST"],
-      "domain": null
+      "methods": ["POST"]
     },
     "password.request": {
       "uri": "forgot-password",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "password.email": {
-      "uri": "forgot-password",
-      "methods": ["POST"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "password.reset": {
       "uri": "reset-password\/{token}",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
+    },
+    "password.email": {
+      "uri": "forgot-password",
+      "methods": ["POST"]
     },
     "password.update": {
       "uri": "reset-password",
-      "methods": ["POST"],
-      "domain": null
+      "methods": ["POST"]
     },
     "register": {
       "uri": "register",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
+    },
+    "user-profile-information.update": {
+      "uri": "user\/profile-information",
+      "methods": ["PUT"]
+    },
+    "user-password.update": {
+      "uri": "user\/password",
+      "methods": ["PUT"]
     },
     "password.confirm": {
       "uri": "user\/confirm-password",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "password.confirmation": {
       "uri": "user\/confirmed-password-status",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "two-factor.login": {
       "uri": "two-factor-challenge",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "profile.show": {
       "uri": "user\/profile",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "other-browser-sessions.destroy": {
       "uri": "user\/other-browser-sessions",
-      "methods": ["DELETE"],
-      "domain": null
+      "methods": ["DELETE"]
     },
     "current-user.destroy": {
       "uri": "user",
-      "methods": ["DELETE"],
-      "domain": null
+      "methods": ["DELETE"]
     },
     "current-user-photo.destroy": {
       "uri": "user\/profile-photo",
-      "methods": ["DELETE"],
-      "domain": null
-    },
-    "api-tokens.index": {
-      "uri": "user\/api-tokens",
-      "methods": ["GET", "HEAD"],
-      "domain": null
-    },
-    "api-tokens.store": {
-      "uri": "user\/api-tokens",
-      "methods": ["POST"],
-      "domain": null
-    },
-    "api-tokens.update": {
-      "uri": "user\/api-tokens\/{token}",
-      "methods": ["PUT"],
-      "domain": null
-    },
-    "api-tokens.destroy": {
-      "uri": "user\/api-tokens\/{token}",
-      "methods": ["DELETE"],
-      "domain": null
+      "methods": ["DELETE"]
     },
     "posts.index": {
       "uri": "\/",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "posts.show": {
-      "uri": "posts\/{id}",
+      "uri": "posts\/{post}",
       "methods": ["GET", "HEAD"],
-      "domain": null
+      "bindings": {
+        "post": "id"
+      }
     },
     "dashboard.my-posts.index": {
       "uri": "dashboard\/my-posts",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "dashboard.my-posts.create": {
       "uri": "dashboard\/my-posts\/create",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "dashboard.my-posts.store": {
       "uri": "dashboard\/my-posts",
-      "methods": ["POST"],
-      "domain": null
+      "methods": ["POST"]
     },
     "dashboard.my-posts.show": {
       "uri": "dashboard\/my-posts\/{my_post}",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "dashboard.my-posts.edit": {
       "uri": "dashboard\/my-posts\/{my_post}\/edit",
-      "methods": ["GET", "HEAD"],
-      "domain": null
+      "methods": ["GET", "HEAD"]
     },
     "dashboard.my-posts.update": {
       "uri": "dashboard\/my-posts\/{my_post}",
-      "methods": ["PUT", "PATCH"],
-      "domain": null
+      "methods": ["PUT", "PATCH"]
     },
     "dashboard.my-posts.destroy": {
       "uri": "dashboard\/my-posts\/{my_post}",
-      "methods": ["DELETE"],
-      "domain": null
+      "methods": ["DELETE"]
     }
-  },
-  baseUrl: 'http://larablog.test/',
-  baseProtocol: 'http',
-  baseDomain: 'larablog.test',
-  basePort: false,
-  defaultParameters: []
+  }
 };
 
 if (typeof window !== 'undefined' && typeof window.Ziggy !== 'undefined') {
-  for (var name in window.Ziggy.namedRoutes) {
-    Ziggy.namedRoutes[name] = window.Ziggy.namedRoutes[name];
+  for (var name in window.Ziggy.routes) {
+    Ziggy.routes[name] = window.Ziggy.routes[name];
   }
 }
 

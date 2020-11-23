@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 =====================================*/
 
 Route::get('/',           [BlogPostController::class, 'index'])->name('posts.index');
-Route::get('/posts/{id}', [BlogPostController::class, 'show'])->name('posts.show');
+Route::get('/posts/{post}', [BlogPostController::class, 'show'])->name('posts.show');
 
 /*=====  End of Public routes  ======*/
 

@@ -14,9 +14,7 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-
-        return view('welcome')->with(compact('posts'));
+        return view('blog.index')->withPosts(Post::all());
     }
 
     /**
@@ -27,6 +25,6 @@ class BlogPostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('blog.show')->withPost($post);
     }
 }
