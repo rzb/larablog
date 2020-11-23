@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Post;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Requests\StorePost;
 
 class PostsTest extends TestCase
@@ -21,7 +21,7 @@ class PostsTest extends TestCase
             'title', 'description', 'publication_date',
         ]);
 
-        $this->post(route('my-posts.store'), $attributes);
+        $this->post(route('dashboard.my-posts.store'), $attributes);
 
         $this->assertDatabaseMissing('posts', $attributes);
     }
@@ -35,7 +35,7 @@ class PostsTest extends TestCase
         ]);
 
         $this->actingAs($user)
-             ->post(route('my-posts.store'), $attributes);
+             ->post(route('dashboard.my-posts.store'), $attributes);
 
         $this->assertDatabaseHas('posts', $attributes);
     }
@@ -47,7 +47,7 @@ class PostsTest extends TestCase
         $someoneElsesPost = Post::factory()->create();
 
         $response = $this->actingAs($userPost->author)
-                         ->get(route('my-posts.index'));
+                         ->get(route('dashboard.my-posts.index'));
     
         $response
             ->assertStatus(200)
