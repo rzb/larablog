@@ -7,8 +7,10 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Post;
+use App\Http\Controllers\PostController;
+use App\Http\Requests\StorePost;
 
-class PostControllerTest extends TestCase
+class PostsTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
@@ -51,5 +53,20 @@ class PostControllerTest extends TestCase
             ->assertStatus(200)
             ->assertSee($userPost->title)
             ->assertDontSee($someoneElsesPost->title);
+    }
+
+    /** @test */
+    public function post_store_is_validated_using_a_form_request()
+    {
+        // By making sure that the form request is being used, we don't 
+        // need to write a test for every single validation rule.
+        // Laravel already takes care of testing the rules.
+        // All we need to to is assert that we are using
+        // the proper rules. @see tests\Unit\StorePost.
+        $this->assertActionUsesFormRequest(
+            PostController::class,
+            'store',
+            StorePost::class
+        );
     }
 }
