@@ -27,7 +27,8 @@
         <div class="antialiased">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
                 <header class="flex justify-between items-center py-8">
-                    <x-application-logo-link />
+                    <x-application-logo-link class="hidden sm:block" />
+                    <x-application-mark-link class="sm:hidden" />
 
                     <div class="text-base leading-5">
                         @if (Route::has('login'))

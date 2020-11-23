@@ -1,4 +1,4 @@
-<a aria-label="Larablog" href="{{ route('posts.index') }}">
+<a aria-label="Larablog" href="{{ route('posts.index') }}" {{ $attributes->merge(['class' => 'block h-12 w-48']) }}>
     <svg class="block h-12 w-48" width="2427pt" height="624pt" viewBox="0 0 163.82 30.69">
         <defs>
             <style>.cls-1{fill:#000;}.cls-2{fill:#ed1c24;}</style>
