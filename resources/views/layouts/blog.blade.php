@@ -30,7 +30,7 @@
                     <x-application-logo-link class="hidden sm:block" />
                     <x-application-mark-link class="sm:hidden" />
 
-                    <div class="text-base leading-5">
+                    <div class="text-base leading-5 flex justify-between">
                         @if (Route::has('login'))
 
                             @auth
