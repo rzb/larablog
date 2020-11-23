@@ -74,7 +74,7 @@
                                         </div>
 
                                         <div class="text-sm text-gray-400" v-if="post.publication_date">
-                                            Published {{ fromNow(post.publication_date) }}
+                                            Published {{ post.publication_date | ago }}
                                         </div>
                                     </div>
                                 </div>
@@ -133,10 +133,6 @@
                 this.createPostForm.post('/my-posts', {
                     preserveScroll: true,
                 })
-            },
-
-            fromNow(timestamp) {
-                return moment(timestamp).local().fromNow()
             },
         }
     }

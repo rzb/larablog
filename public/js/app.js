@@ -3352,9 +3352,6 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function () {
         _this3.apiTokenBeingDeleted = null;
       });
-    },
-    fromNow: function fromNow(timestamp) {
-      return moment(timestamp).local().fromNow();
     }
   }
 });
@@ -3591,9 +3588,6 @@ __webpack_require__.r(__webpack_exports__);
       this.createPostForm.post('/my-posts', {
         preserveScroll: true
       });
-    },
-    fromNow: function fromNow(timestamp) {
-      return moment(timestamp).local().fromNow();
     }
   }
 });
@@ -47276,7 +47270,7 @@ var render = function() {
                                                   _vm._v(
                                                     "\n                                    Last used " +
                                                       _vm._s(
-                                                        _vm.fromNow(
+                                                        _vm._f("ago")(
                                                           token.last_used_at
                                                         )
                                                       ) +
@@ -47341,7 +47335,7 @@ var render = function() {
                       ],
                       null,
                       false,
-                      909607769
+                      2981586088
                     )
                   })
                 ],
@@ -48057,7 +48051,7 @@ var render = function() {
                                                     _vm._v(
                                                       "\n                                        Published " +
                                                         _vm._s(
-                                                          _vm.fromNow(
+                                                          _vm._f("ago")(
                                                             post.publication_date
                                                           )
                                                         ) +
@@ -48078,7 +48072,7 @@ var render = function() {
                             ],
                             null,
                             false,
-                            2467374694
+                            3122819863
                           )
                         })
                       ],
@@ -61551,6 +61545,41 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/Filters/date.js":
+/*!**************************************!*\
+  !*** ./resources/js/Filters/date.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ago; });
+function ago(date) {
+  return moment(date).local().fromNow();
+}
+
+/***/ }),
+
+/***/ "./resources/js/Filters/index.js":
+/*!***************************************!*\
+  !*** ./resources/js/Filters/index.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _date__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./date */ "./resources/js/Filters/date.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  install: function install(Vue) {
+    Vue.filter('ago', _date__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/Jetstream/ActionMessage.vue":
 /*!**************************************************!*\
   !*** ./resources/js/Jetstream/ActionMessage.vue ***!
@@ -63867,7 +63896,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var laravel_jetstream__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(laravel_jetstream__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var portal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! portal-vue */ "./node_modules/portal-vue/dist/portal-vue.common.js");
 /* harmony import */ var portal_vue__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(portal_vue__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Filters__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Filters */ "./resources/js/Filters/index.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 
@@ -63881,6 +63912,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_1__["InertiaApp"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(laravel_jetstream__WEBPACK_IMPORTED_MODULE_2__["InertiaForm"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(portal_vue__WEBPACK_IMPORTED_MODULE_3___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_Filters__WEBPACK_IMPORTED_MODULE_4__["default"]);
 var app = document.getElementById('app');
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   render: function render(h) {
