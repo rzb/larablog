@@ -19,6 +19,15 @@ class Post extends Model
         'publication_date'
     ];
 
+    public static function getRulesForStoring()
+    {
+        return [
+            'title'            => 'required|unique:posts|max:100',
+            'description'      => 'required|max:1000',
+            'publication_date' => 'required|date',
+        ];
+    }
+
     public function author()
     {
         return $this->belongsTo('App\Models\User', 'author_id');

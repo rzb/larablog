@@ -61,7 +61,7 @@ class PostsTest extends TestCase
         // By making sure that the form request is being used, we don't 
         // need to write a test for every single validation rule.
         // Laravel already takes care of testing the rules.
-        // All we need to to is assert that we are using
+        // All we need to do is assert that we are using
         // the proper rules. @see tests\Unit\StorePost.
         $this->assertActionUsesFormRequest(
             PostController::class,

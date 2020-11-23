@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Post', 'author_id');
     }
+
+    public function scopeAdmin($query)
+    {
+        return $query->whereEmail(env('ADMIN_EMAIL'));
+    }
 }
