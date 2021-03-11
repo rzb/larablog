@@ -14,8 +14,6 @@ This is a test. Not intended for use in production.
 
 ## Thoughts
 
-I was on a newly arrived laptop that came with Windows and only had the weekend, so I had to compromise a few things. It was pretty fun, though!
-
 ### Using varnish for full page caching
 
 In order to minimise the strain put on our system during traffic peaks, I decided to leverage Varnish for full page cache. It will cache the homepage and the individual post pages for 2 minutes.
@@ -27,8 +25,6 @@ In a real world app, we'd need to know more about the traffic. For example, depe
 I wasn't sure if the requirement was to allow the user to toggle asc and desc. And I couldn't have asked on the weekend. So I assumed you just wanted posts to be sorted by latest by default. Of course, no assumptions in real world projects!
 
 ## Instalation
-
-In order to avoid wasting time fighting the Windows environment, I forked a full Laradock installation and tweaked configuration files as needed. I'm aware that it may be an overkill for you, though. Sorry for the inconvenience!
 
 ### Clone repo with submodules:
 ```sh
